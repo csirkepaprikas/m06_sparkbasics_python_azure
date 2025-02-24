@@ -1,12 +1,12 @@
 # Spark Basics Homework 
 
 ### Balázs Mikes
-```python
-github link:
+
+#### github link:
 https://github.com/csirkepaprikas/m06_sparkbasics_python_azure.git
-docker link:
+#### docker link:
 https://hub.docker.com/repository/docker/michaelcorvin/last/general
-```
+
 This Spark Basic Homework is targeted to address several main topics of work with Spark.This project focuses on several key topics related to working with Spark. Through the completion of this homework I gained experience in various aspects of Spark development, including deploying a Spark Cluster to the cloud, developing Spark Jobs, and testing Spark applications.Additionally the goal was to become more familiar with important tools such as Terraform/Kubernetes, Azure cloud platforms, and Spark internals, such as developing basic logic within the Spark framework.
 
 The actual task was to apply an ETL job – coded in python - on the source datas - saved on Azure Blob storage -: a set of hotels data in csv files and a set of weather datas in parquet format. The execution taoes place on Azure AKS. Both data sets contains longitude and latitude columns but in case of the hotels’ they might be missing or being saved in inappropiate format. The task was to clean this hotels’ data, fill with the proper coordinates by applying an API, then attach geohash to both of the data sources, then join and save them -also on Blob storage- in the same structured, partioned format as the source weather data.
