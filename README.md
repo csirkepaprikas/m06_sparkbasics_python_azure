@@ -218,7 +218,7 @@ for row in date_groups:
 spark.stop()
 ```
 
-# I used this this dockerfile: 
+## I used this this dockerfile: 
 
 
 ```python
@@ -294,7 +294,7 @@ ARG spark_uid=185
 USER ${spark_uid}
 ```
 
-# To create this docker image: 
+## To create this docker image: 
 
 ```python
 c:\data_eng\GIT\m06_sparkbasics_python_azure>docker build -f ./docker/HW1_Dockerfile_final2 -t last:last .
@@ -334,14 +334,14 @@ c:\data_eng\GIT\m06_sparkbasics_python_azure>docker build -f ./docker/HW1_Docker
  => => unpacking to docker.io/library/last:last                                                                                                                                                               8.5s
 ```
 
-# I created an Azure Blob storage, than a homework1 container, where uploaded the source datas: 
+## I created an Azure Blob storage, than a homework1 container, where uploaded the source datas: 
 
 ![source](https://github.com/user-attachments/assets/acf0dd8e-7769-44c2-a75b-aa68e62e4b8e)
 ![source2](https://github.com/user-attachments/assets/92ef9db7-15b0-480a-ac3a-f6ba2b9077ae)
 
 
 # I Infrastructure creation with terraform (fraction of the plan):
-
+```python
 + resource "azurerm_kubernetes_cluster" "bdcc" {
       + dns_prefix                          = "bdccdevelopment"
       + location                            = "westeurope"
@@ -367,22 +367,22 @@ c:\data_eng\GIT\m06_sparkbasics_python_azure>docker build -f ./docker/HW1_Docker
           + ultra_ssd_enabled    = false
           + vm_size              = "Standard_E4s_v3"
     Successful creation: Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
-  
+  ```
 
-# After the successful infra creation I checked the fresh and crispy resources:
+## After the successful infra creation I checked the fresh and crispy resources:
 
 ![rg_west_eu](https://github.com/user-attachments/assets/48566f52-35a8-4061-935b-cf7e87c9927f)
 ![rg_sub](https://github.com/user-attachments/assets/5206d943-2f66-4937-8024-b3542cbd7217)
 
 
 
-# The VM size was a bottleneck, the free tier limited the usable VCPU numbers in 4, so by the second infra provisioning I’ve found the most suitable type: E4s_v3, which has 32GB memory, with this one I could decrease the processing time with 60%. Because of the limitation of the free tier I could only use 1 vCPU for the Driver and 1 for the Executor – on 1 thread- my approach was to maximize the RAM usage. ##
+## The VM size was a bottleneck, the free tier limited the usable VCPU numbers in 4, so by the second infra provisioning I’ve found the most suitable type: E4s_v3, which has 32GB memory, with this one I could decrease the processing time with 60%. Because of the limitation of the free tier I could only use 1 vCPU for the Driver and 1 for the Executor – on 1 thread- my approach was to maximize the RAM usage. ##
 
 
 ![vm](https://github.com/user-attachments/assets/66225dd8-8d60-4ee9-8088-0aaf7a1df27d)
 
 
-# Here you can see the logs of the pods and the AKS node: 
+## Here you can see the logs of the pods and the AKS node: 
 
 ```python
 NAME                                             READY   STATUS    RESTARTS   AGE
@@ -678,20 +678,20 @@ Events:                      <none>
 
 ```
 
-# Fraction of the spark-submit and the container building 
+## Fraction of the spark-submit and the container building 
 
 
 ![submit](https://github.com/user-attachments/assets/7bbbed4b-2d64-40c2-9ada-2b3c6aa5d475)
 
 
-# I used proxy server for the Spark job execution. I also applied port-forwarding to being able to access the Spark UI:
+## I used proxy server for the Spark job execution. I also applied port-forwarding to being able to access the Spark UI:
 
 
 ![portfrwd](https://github.com/user-attachments/assets/cbcb3bae-014a-40f6-84be-5f2b5937ed32)
 
 
 
-# Here is the UI of the Spark, where In the Spark UI during an ETL job, you can get detailed insights into the execution process and the resource utilization of the cluster. The Jobs tab displays the status, runtime, and any potential errors of the jobs being executed. The Stages view shows the details of different processing steps, including the execution graph and shuffle operations. The Storage tab provides information on the state of RDDs and DataFrames in cache, while the Executors tab shows the status of the nodes running in the cluster, including their memory and task distribution
+## Here is the UI of the Spark, where In the Spark UI during an ETL job, you can get detailed insights into the execution process and the resource utilization of the cluster. The Jobs tab displays the status, runtime, and any potential errors of the jobs being executed. The Stages view shows the details of different processing steps, including the execution graph and shuffle operations. The Storage tab provides information on the state of RDDs and DataFrames in cache, while the Executors tab shows the status of the nodes running in the cluster, including their memory and task distribution
 
 
 ![ui_1](https://github.com/user-attachments/assets/cf00e31b-8a46-4abc-b24d-6766dd793302)
@@ -700,19 +700,19 @@ Events:                      <none>
 ![ui_tl3](https://github.com/user-attachments/assets/ec48bcb9-cab6-49f7-95c6-029354d5770a)
 
 
-# The process took more than an hour, after the successful operation the pod status changed from Running to Completed:
+## The process took more than an hour, after the successful operation the pod status changed from Running to Completed:
 
 
 ![compl](https://github.com/user-attachments/assets/8b526a18-0c92-4070-a3ae-55fffab78a53)
 
 
-# The enriched data was successfully created in the predefined directory, with the same structure and file format as the weather datas:
+## The enriched data was successfully created in the predefined directory, with the same structure and file format as the weather datas:
 
 
 ![destin](https://github.com/user-attachments/assets/1909b88b-557d-438b-ad76-fa1370c6bb96)
 
 
-# Here you can see the content of the enriched data:
+## Here you can see the content of the enriched data:
 
 
 ![enriched](https://github.com/user-attachments/assets/fd0f371d-a83d-44a9-8db5-e8a4ed6211ff)
