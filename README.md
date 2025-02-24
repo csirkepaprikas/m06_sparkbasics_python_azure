@@ -340,7 +340,7 @@ c:\data_eng\GIT\m06_sparkbasics_python_azure>docker build -f ./docker/HW1_Docker
 ![source2](https://github.com/user-attachments/assets/92ef9db7-15b0-480a-ac3a-f6ba2b9077ae)
 
 
-# I Infrastructure creation with terraform (fraction of the plan):
+# Infrastructure creation with terraform (fraction of the plan):
 ```python
 + resource "azurerm_kubernetes_cluster" "bdcc" {
       + dns_prefix                          = "bdccdevelopment"
