@@ -371,15 +371,17 @@ c:\data_eng\GIT\m06_sparkbasics_python_azure>docker build -f ./docker/HW1_Docker
 
 ## After the successful infra creation I checked the fresh and crispy resources:
 
-![rg_west_eu](https://github.com/user-attachments/assets/48566f52-35a8-4061-935b-cf7e87c9927f)
-![rg_sub](https://github.com/user-attachments/assets/5206d943-2f66-4937-8024-b3542cbd7217)
+![rg_west_eu](https://github.com/user-attachments/assets/afa2e6d0-d8fe-4095-9fc7-6a7f58f69c03)
+![rg_sub](https://github.com/user-attachments/assets/ade8e09c-5b3b-4044-8a1b-ae394a4cd86e)
+
 
 
 
 ## The VM size was a bottleneck, the free tier limited the usable VCPU numbers in 4, so by the second infra provisioning I’ve found the most suitable type: E4s_v3, which has 32GB memory, with this one I could decrease the processing time with 60%. Because of the limitation of the free tier I could only use 1 vCPU for the Driver and 1 for the Executor – on 1 thread- my approach was to maximize the RAM usage. ##
 
 
-![vm](https://github.com/user-attachments/assets/66225dd8-8d60-4ee9-8088-0aaf7a1df27d)
+![vm](https://github.com/user-attachments/assets/6a11fd15-0c10-4e92-af9c-4fd916fb74d5)
+
 
 
 ## Here you can see the logs of the pods and the AKS node: 
