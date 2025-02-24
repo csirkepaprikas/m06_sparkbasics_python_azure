@@ -221,7 +221,7 @@ spark.stop()
 # I used this this dockerfile: 
 
 
-
+```python
 Modify this docker for your needs
 FROM openjdk:8-alpine
 
@@ -292,11 +292,11 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
  Specify the User that the actual main process will run as
 ARG spark_uid=185
 USER ${spark_uid}
-
+```
 
 # To create this docker image: 
 
-
+```python
 c:\data_eng\GIT\m06_sparkbasics_python_azure>docker build -f ./docker/HW1_Dockerfile_final2 -t last:last .
 [+] Building 10.5s (22/22) FINISHED                                                                                                                                                           docker:desktop-linux
  => [internal] load build definition from HW1_Dockerfile_final2                                                                                                                                               0.0s
@@ -332,7 +332,7 @@ c:\data_eng\GIT\m06_sparkbasics_python_azure>docker build -f ./docker/HW1_Docker
  => => exporting manifest list sha256:e75ca35efe912bc7096f891876e28c20946ec31a198373b7d36e2f6416435c18                                                                                                        0.0s
  => => naming to docker.io/library/last:last                                                                                                                                                                  0.0s
  => => unpacking to docker.io/library/last:last                                                                                                                                                               8.5s
-
+```
 
 # I created an Azure Blob storage, than a homework1 container, where uploaded the source datas: 
 
@@ -367,7 +367,7 @@ c:\data_eng\GIT\m06_sparkbasics_python_azure>docker build -f ./docker/HW1_Docker
           + ultra_ssd_enabled    = false
           + vm_size              = "Standard_E4s_v3"
     Successful creation: Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
-
+  
 
 # After the successful infra creation I checked the fresh and crispy resources:
 
@@ -384,7 +384,7 @@ c:\data_eng\GIT\m06_sparkbasics_python_azure>docker build -f ./docker/HW1_Docker
 
 # Here you can see the logs of the pods and the AKS node: 
 
-
+```python
 NAME                                             READY   STATUS    RESTARTS   AGE
 azure-blob-storage-etl-ad1de495292ed9-exec-1   1/1     Running   0          12m
 proj1-f4c50895288001-driver                    1/1     Running   0          12m
@@ -676,6 +676,7 @@ Tolerations:                 node.kubernetes.io/memory-pressure:NoSchedule op=Ex
                              node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
 Events:                      <none>
 
+```
 
 # Fraction of the spark-submit and the container building 
 
