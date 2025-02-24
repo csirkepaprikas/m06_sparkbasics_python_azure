@@ -216,7 +216,7 @@ for row in date_groups:
 
 # Stopping Spark session
 spark.stop()
-
+```python
 
 # I used this this dockerfile: 
 
