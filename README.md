@@ -334,7 +334,7 @@ c:\data_eng\GIT\m06_sparkbasics_python_azure>docker build -f ./docker/HW1_Docker
  => => unpacking to docker.io/library/last:last                                                                                                                                                               8.5s
 ```
 
-## I created an Azure Blob storage, than a homework1 container, where uploaded the source datas: 
+## I created an Azure Blob storage, then a homework1 container, where uploaded the source datas: 
 
 ![source](https://github.com/user-attachments/assets/acf0dd8e-7769-44c2-a75b-aa68e62e4b8e)
 ![source2](https://github.com/user-attachments/assets/92ef9db7-15b0-480a-ac3a-f6ba2b9077ae)
