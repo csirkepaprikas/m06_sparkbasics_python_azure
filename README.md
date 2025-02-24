@@ -15,7 +15,7 @@ The actual task was to apply an ETL job – coded in python - on the source data
 # Here you can see the actual well-documented code:
 
 
-'''python
+```python
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, udf, when, avg, first
 from pyspark.sql.types import StructType, StructField, DoubleType, StringType
