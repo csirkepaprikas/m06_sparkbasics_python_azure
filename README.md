@@ -11,11 +11,11 @@ This Spark Basic Homework is targeted to address several main topics of work wit
 
 The actual task was to apply an ETL job – coded in python - on the source datas - saved on Azure Blob storage -: a set of hotels data in csv files and a set of weather datas in parquet format. The execution taoes place on Azure AKS. Both data sets contains longitude and latitude columns but in case of the hotels’ they might be missing or being saved in inappropiate format. The task was to clean this hotels’ data, fill with the proper coordinates by applying an API, then attach geohash to both of the data sources, then join and save them -also on Blob storage- in the same structured, partioned format as the source weather data.
 
-/////////////////////////////////////////////////////////////////////////
-## Here you can see the actual well-documented code: ##
-/////////////////////////////////////////////////////////////////////////
+
+# Here you can see the actual well-documented code:
 
 
+'''python
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, udf, when, avg, first
 from pyspark.sql.types import StructType, StructField, DoubleType, StringType
@@ -217,9 +217,9 @@ for row in date_groups:
 # Stopping Spark session
 spark.stop()
 
-/////////////////////////////////////////////////////////////////////////
-      ## I used this this dockerfile: ##
-/////////////////////////////////////////////////////////////////////////
+
+      # I used this this dockerfile: 
+
 
 
 #Modify this docker for your needs
@@ -293,9 +293,9 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
 ARG spark_uid=185
 USER ${spark_uid}
 
-/////////////////////////////////////////////////////////////////////////
-## To create this docker image: ##
-/////////////////////////////////////////////////////////////////////////
+
+# To create this docker image: 
+
 
 c:\data_eng\GIT\m06_sparkbasics_python_azure>docker build -f ./docker/HW1_Dockerfile_final2 -t last:last .
 [+] Building 10.5s (22/22) FINISHED                                                                                                                                                           docker:desktop-linux
@@ -369,22 +369,22 @@ c:\data_eng\GIT\m06_sparkbasics_python_azure>docker build -f ./docker/HW1_Docker
           + vm_size              = "Standard_E4s_v3"
     Successful creation: Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
-/////////////////////////////////////////////////////////////////////////
-## After the successful infra creation I checked the fresh and crispy resources: ##
-/////////////////////////////////////////////////////////////////////////
+
+# After the successful infra creation I checked the fresh and crispy resources:
+
 ![rg_west_eu](https://github.com/user-attachments/assets/48566f52-35a8-4061-935b-cf7e87c9927f)
 ![rg_sub](https://github.com/user-attachments/assets/5206d943-2f66-4937-8024-b3542cbd7217)
 
 
-/////////////////////////////////////////////////////////////////////////
-## The VM size was a bottleneck, the free tier limited the usable VCPU numbers in 4, so by the second infra provisioning I’ve found the most suitable type: E4s_v3, which has 32GB memory, with this one I could decrease the processing time with 60%. Because of the limitation of the free tier I could only use 1 vCPU for the Driver and 1 for the Executor – on 1 thread- my approach was to maximize the RAM usage. ##
-/////////////////////////////////////////////////////////////////////////
+
+# The VM size was a bottleneck, the free tier limited the usable VCPU numbers in 4, so by the second infra provisioning I’ve found the most suitable type: E4s_v3, which has 32GB memory, with this one I could decrease the processing time with 60%. Because of the limitation of the free tier I could only use 1 vCPU for the Driver and 1 for the Executor – on 1 thread- my approach was to maximize the RAM usage. ##
+
 
 ![vm](https://github.com/user-attachments/assets/66225dd8-8d60-4ee9-8088-0aaf7a1df27d)
 
-/////////////////////////////////////////////////////////////////////////
-## Here you can see the logs of the pods and the AKS node: ##
-/////////////////////////////////////////////////////////////////////////
+
+# Here you can see the logs of the pods and the AKS node: 
+
 
 NAME                                             READY   STATUS    RESTARTS   AGE
 azure-blob-storage-etl-ad1de495292ed9-exec-1   1/1     Running   0          12m
@@ -677,22 +677,22 @@ Tolerations:                 node.kubernetes.io/memory-pressure:NoSchedule op=Ex
                              node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
 Events:                      <none>
 
-/////////////////////////////////////////////////////////////////////////
-## Fraction of the spark-submit and the container building ##
-/////////////////////////////////////////////////////////////////////////
+
+# Fraction of the spark-submit and the container building 
+
 
 ![submit](https://github.com/user-attachments/assets/7bbbed4b-2d64-40c2-9ada-2b3c6aa5d475)
 
-/////////////////////////////////////////////////////////////////////////
-## I used proxy server for the Spark job execution. I also applied port-forwarding to being able to access the Spark UI:##
-/////////////////////////////////////////////////////////////////////////
+
+# I used proxy server for the Spark job execution. I also applied port-forwarding to being able to access the Spark UI:
+
 
 ![portfrwd](https://github.com/user-attachments/assets/cbcb3bae-014a-40f6-84be-5f2b5937ed32)
 
 
-/////////////////////////////////////////////////////////////////////////
-## Here is the UI of the Spark, where In the Spark UI during an ETL job, you can get detailed insights into the execution process and the resource utilization of the cluster. The Jobs tab displays the status, runtime, and any potential errors of the jobs being executed. The Stages view shows the details of different processing steps, including the execution graph and shuffle operations. The Storage tab provides information on the state of RDDs and DataFrames in cache, while the Executors tab shows the status of the nodes running in the cluster, including their memory and task distribution##
-/////////////////////////////////////////////////////////////////////////
+
+# Here is the UI of the Spark, where In the Spark UI during an ETL job, you can get detailed insights into the execution process and the resource utilization of the cluster. The Jobs tab displays the status, runtime, and any potential errors of the jobs being executed. The Stages view shows the details of different processing steps, including the execution graph and shuffle operations. The Storage tab provides information on the state of RDDs and DataFrames in cache, while the Executors tab shows the status of the nodes running in the cluster, including their memory and task distribution
+
 
 ![ui_1](https://github.com/user-attachments/assets/cf00e31b-8a46-4abc-b24d-6766dd793302)
 ![ui_exec](https://github.com/user-attachments/assets/4e6a8462-0a71-4181-89b4-b144227ce690)
@@ -700,22 +700,20 @@ Events:                      <none>
 ![ui_tl3](https://github.com/user-attachments/assets/ec48bcb9-cab6-49f7-95c6-029354d5770a)
 
 
-/////////////////////////////////////////////////////////////////////////
-## The process took more than an hour, after the successful operation the pod status changed from Running to Completed:##
-/////////////////////////////////////////////////////////////////////////
+# The process took more than an hour, after the successful operation the pod status changed from Running to Completed:
+
 
 ![compl](https://github.com/user-attachments/assets/8b526a18-0c92-4070-a3ae-55fffab78a53)
 
 
-/////////////////////////////////////////////////////////////////////////
-## The enriched data was successfully created in the predefined directory, with the same structure and file format as the weather datas:##
-/////////////////////////////////////////////////////////////////////////
+# The enriched data was successfully created in the predefined directory, with the same structure and file format as the weather datas:
+
 
 ![destin](https://github.com/user-attachments/assets/1909b88b-557d-438b-ad76-fa1370c6bb96)
 
-/////////////////////////////////////////////////////////////////////////
-## Here you can see the content of the enriched data:##
-/////////////////////////////////////////////////////////////////////////
+
+# Here you can see the content of the enriched data:
+
 
 ![enriched](https://github.com/user-attachments/assets/fd0f371d-a83d-44a9-8db5-e8a4ed6211ff)
 
