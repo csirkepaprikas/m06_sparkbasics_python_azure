@@ -707,8 +707,9 @@ Events:                      <none>
 
 
 ## The enriched data was successfully created in the predefined directory, with the same structure and file format as the weather datas:
-
-
+![year](https://github.com/user-attachments/assets/b7d1a319-2173-4fe5-aa47-e73da2656d64)
+![month](https://github.com/user-attachments/assets/1df830ca-c7a5-49eb-96b3-fb9f08d0d132)
+![days](https://github.com/user-attachments/assets/dc48b399-711e-4019-9c88-fb07edd3d72b)
 ![destin](https://github.com/user-attachments/assets/1909b88b-557d-438b-ad76-fa1370c6bb96)
 
 
